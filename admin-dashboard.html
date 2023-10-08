@@ -1,0 +1,245 @@
+<html>
+    <head>
+        <!--Bootstrap 5 CDN(content delivery networks)-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!--Chart JS(chatgpt to give) generate bar chart code with sample data using chart js-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body onload="loadDashboardData()">
+        <!--Navigation Starts-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand">
+                    <img src="images/logo.png"alt=""style="width:30px;">
+                    Dazzling
+                </a>
+            </div>
+        </nav>
+
+        <!--Navigation End-->
+        <br>
+        <div class="container">
+            <h1>Analytics Dashboard</h1>
+            <!--Data Points Start-->
+            <div class="row">
+                <div class="col-3">
+                    <!--Card Start-->
+                    <div class="card"style="background-color:Purple;color:white;">
+                        <div class="card-body">
+                            <h3 class="card-title"id="todayVisitors"></h3>
+                            <h5>Today's Visitors</h5>
+                        </div>
+                    </div>
+                    <!--Card End-->
+                </div>
+                <div class="col-3">
+                  <!--Card Start-->
+                  <div class="card"style="background-color:green;color:white;">
+                    <div class="card-body">
+                        <h3 class="card-title" id="todayAdClick"></h3>
+                        <h5>Today's Ad Clicks</h5>
+                    </div>
+                </div>
+                <!--Card End-->  
+                </div>
+                <div class="col-3">
+                    <!--Card Start-->
+                    <div class="card"style="background-color:red;color:white;">
+                        <div class="card-body">
+                            <h3 class="card-title" id="todayProductClick"></h3>
+                            <h5>Today's Product link</h5>
+                        </div>
+                    </div>
+                    <!--Card End-->
+                </div>
+                <div class="col-3">
+                    <!--Card Start-->
+                    <div class="card"style="background-color:violet;color:white;">
+                        <div class="card-body">
+                            <h3 class="card-title">10</h3>
+                            <h5>Today's Orders</h5>
+                        </div>
+                    </div>
+                    <!--Card End-->
+                </div>
+            </div>
+                <br>
+                <br>
+            <!--Data Points End-->
+            <!--Bar Chart and Orders Table Start-->
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Visitor Trend Over Months</h5>
+                        <canvas id="myBarChart"></canvas>
+                    </div>
+                    <div class="col-6">
+                        <h5>Recent Orders</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>Sl</td>
+                                    <td>Order Date</td>
+                                    <td>Customer</td>
+                                    <td>Products</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>30-08-2010</td>
+                                    <td>Adarsh</td>
+                                    <td>Royal Enfield</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>29-08-2010</td>
+                                    <td>Gokul</td>
+                                    <td>iPad</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>28-08-2010</td>
+                                    <td>Jayanth</td>
+                                    <td>Tablet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <!--Bar Chart and Orders Table End-->
+        </div>
+        <script>
+           
+            function loadDashboardData(){
+                //AJAX for todays visitors
+                var xhttpTodayVisitors = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpTodayVisitors.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)
+                            var jsonData=JSON.parse(this.responseText)
+                            {
+                             document.getElementById('todayVisitors').innerHTML=jsonData[0].visitor_count
+                            }  
+                    }
+                }
+                      xhttpTodayVisitors.open("GET","http://127.0.0.1:8080/today-visitors",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded")//SEND TO SERVER IS ENCRYPTED
+                     xhttpTodayVisitors.send()
+
+                     //AJAX FOR TODAYS AD CLICK
+                     var xhttpTodayAdClicks = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpTodayAdClicks.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)
+                            var jsonData=JSON.parse(this.responseText)
+                            {
+                             document.getElementById('todayAdClick').innerHTML=jsonData[0].clicks
+                            }    
+                        
+                    }
+                }
+                      xhttpTodayAdClicks.open("GET","http://127.0.0.1:8080/today-ad-clicks",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded")//SEND TO SERVER IS ENCRYPTED
+                     xhttpTodayAdClicks.send()
+
+                     var xhttpTodayPClicks = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpTodayPClicks.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)
+                            var jsonData=JSON.parse(this.responseText)
+                            {
+                             document.getElementById('todayProductClick').innerHTML=jsonData[0].count
+                            }
+                            
+                        
+                    }
+                }
+                      xhttpTodayPClicks.open("GET","http://127.0.0.1:8080/today-product-clicks",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded")//SEND TO SERVER IS ENCRYPTED
+                     xhttpTodayPClicks.send()
+    
+                     //graph AJAX
+                     var xhttpVisitorTrend = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpVisitorTrend.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)
+                            var jsonData=JSON.parse(this.responseText)
+                            var monthArr=[]
+                            for(var m=1;m<=12;m++)
+
+                            {
+                             matchResult= chkValueInJson(jsonData,m)
+                             if(matchResult>0)
+                             {
+                                monthArr.push(matchResult)
+                             }else{
+                                monthArr.push(0)
+                             }
+                             
+                             
+                            }//end for
+
+                            console.log(monthArr)
+                             // Sample data//Graph chart
+            var data = {
+              labels: ["Jan", "Feb", "Mar", "Apr", "May","jun","jul","Aug","Sep","Oct","Nov","Dec"],
+              datasets: [{
+                label: 'Visitors Trend',
+                data: monthArr,
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+              }]
+            };
+        
+            // Chart configuration
+            var config = {
+              type: 'bar',
+              data: data,
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            };
+        
+            // Create the chart
+            var ctx = document.getElementById('myBarChart').getContext('2d');
+            var myChart = new Chart(ctx, config);
+                        
+                    }
+                }
+                      xhttpVisitorTrend.open("GET","http://127.0.0.1:8080/visitor-trend",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded")//SEND TO SERVER IS ENCRYPTED
+                     xhttpVisitorTrend.send()
+
+            }
+            function chkValueInJson(jsonData,value)
+            {
+                var jsonLength=jsonData.length
+                var match = 0
+                for(var i=0;i<jsonLength;i++){
+                    if(Number(jsonData[i].month)==Number(value))
+                    {
+                        match=jsonData[i].monthly_visitors
+                        break
+                    }
+                }
+                return match
+            }
+
+
+          </script>
+        
+    </body>
+</html>

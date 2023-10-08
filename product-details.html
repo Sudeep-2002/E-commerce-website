@@ -1,0 +1,217 @@
+<html>
+    <head>
+        <!--Bootstrap 5 CDN(content delivery networks)-->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+         
+         <!--Bootstrap JS BUNDLE CDN-->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!--Navigation Start-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand">
+                    <img src="images/logo.png"alt=""style="width:30px;">
+                    Dazzling
+                </a>
+            </div>
+        </nav>
+
+        <!---Navigation End-->
+        <br>
+        
+        <div class="container">
+            <h1>Product Details</h1>
+            <!--Product Display Grid Start-->
+            <div class="row">
+            <div class="col-4">
+                <br>
+                <img src="https://www.zdnet.com/a/img/resize/a599efb452885d4f668855aea18aae668867a960/2023/02/06/10e9ac75-29ce-4e6c-b2fb-8df48e1e40b0/oneplus-11-never-settle.jpg?auto=webp&fit=crop&height=900&width=1200"style="width: 100%;margin-bottom:7px;">
+            <br>
+            <!--Secondary images start-->
+            <div class="row">
+            <div class="col-4">
+                <div class="border border-dark">
+                <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1686747184/Croma%20Assets/Communication/Mobiles/Images/243459_1_zdopi1.png?tr=w-640"style="width:100%"></div>
+
+            </div>
+            <div class="col-4">
+                <div class="border border-dark">
+                <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1664009258/Croma%20Assets/Communication/Mobiles/Images/243459_0_ljp1lm.png?tr=w-640"style="width:100%">
+            </div>
+            </div>
+            <div class="col-4">
+                <div class="border border-dark">
+                <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1685964189/Croma%20Assets/Communication/Mobiles/Images/243459_4_n1ig5z.png?tr=w-640"style="width:100%">
+            </div>
+            </div>
+            </div>
+             <!--secondary images end-->
+            </div>
+            <div class="col-8">
+                <h2 class="text-center">iPhone 14 pro Max-256 GB,Deep Purple</h2>
+                <p class="text-center">iPhone comes with Retina Display and 48MP Camera</p>
+                <h2 style="color:green;margin-left:140px;">&#8377;1,49,999.00 /-</h2>
+                <br>
+                <p style="margin-left: 145px;"><b>Key Features</b>
+                    <ul style="margin-left: 140px;">
+                    <li>Display: 6.1 inches (15.4 cm), Super Retina XDR OLED</li>
+                     <li> Memory: 128GB ROM</li>
+                     <li> Processor: Apple A15 Bionic, Hexa Core</li>
+                     <li> Camera: 12 MP + 12 MP Dual Rear & 12 MP Front Camera</li>
+                      <li>Battery: 15W Wireless Charging</li>
+                       <li>Security (Lock): Password | PIN | Face Unlock</li>
+                        </ul>
+                </p>
+                <!--Button Start-->
+                <div class="row">
+                    <div class="col-1"></div>
+                <div class="col-3">
+                    <button class="btn btn-primary"style="width:100%;"data-bs-toggle="modal"data-bs-target="#customerOrderPopup">Buy Now
+                    </button>
+                </div>
+                <div class="col-6">
+                    <a href="#"style="text-decoration:none;margin-top:1000px;">Add To Cart</a>
+
+                </div>
+                </div>
+                <!--Button End-->
+            </div>
+            </div>
+            <!--Product Display Grid End-->
+            
+        </div>
+        <!--As Customer Order Popup Start-->
+        <div class="modal fade" id="customerOrderPopup"tabindex="-1"role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content"> 
+                    <div class="modal-header">
+                        <h5 class="modal-title">ENTER SHIPPING DETAILS</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Please Enter Shipping details below
+                        </p>
+                        <p>
+                            <label for="">Name</label>
+                            <input type="text"class="form-control"id="name">
+                            <span id="errMsgName"style="color:red;"></span>
+                        </p>
+                        <p>
+                            <label for="">Email</label>
+                            <input type="text"class="form-control"id="email">
+                            <span id="errMsgEmail"style="color:red;"></span>
+                        </p>
+                        <p>
+                            <label for="">Mobile</label>
+                            <input type="text"class="form-control"id="mobile">
+                            <span id="errMsgMobile"style="color:red;"></span>
+                        </p>
+                        <p>
+                            <label for="">Shipping Address Line 1</label>
+                            <input type="text"class="form-control"id="shippingaddress1">
+                            <span id="errMsgShippingaddress1"style="color:red;"></span>
+                        </p>
+                        <p>
+                            <label for="">Shipping Address Line 2</label>
+                            <input type="text"class="form-control"id="shippingaddress2">
+                            <span id="errMsgShippingaddress2"style="color:red;"></span>
+                        </p>
+                        
+                        <a href="order-success.html">
+                        <button class="btn btn-success"style="width:100%;"onclick="validateContactForm()">Place order</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--As Customer Order Popup End-->
+        <script>
+           function validateContactForm(){
+            //Read Value from name text box
+            var name=document.getElementById('name').value;
+                    if(name=='')
+                    {
+                        document.getElementById('errMsgName').innerHTML='Please Enter Name'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgName').innerHTML=''
+                    }
+                    var regxName=/^[A-Za-z. ]+$/  //Regular Expression concept
+                    var validName=name.match(regxName)  
+                    if(!validName){
+                        document.getElementById('errMsgName').innerHTML='Please Enter ValidName'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgName').innerHTML=''
+                    }
+                    //Read the value from email text box
+                    var email=document.getElementById('email').value
+                     if(email=='')
+                     {
+                        document.getElementById('errMsgEmail').innerHTML='Please Enter Email'
+                        return false
+                     }
+                    else{
+                        document.getElementById('errMsgEmail').innerHTML=''
+                    }
+                    var regxEmail=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                    var validEmail=email.match(regxEmail)
+                    if(!validEmail){
+                        document.getElementById('errMsgEmail').innerHTML='Please Enter ValidEmail'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgEmail').innerHTML=''
+                    }
+                    //Read the value from mobile text box
+                    var mobile=document.getElementById('mobile').value
+                     if(mobile=='')
+                     {
+                        document.getElementById('errMsgMobile').innerHTML='Please Enter Mobile Number'
+                        return false
+                     }
+                    else{
+                        document.getElementById('errMsgMobile').innerHTML=''
+                    }
+                    var regxMobile=/^[6789]\d{9}$/
+                    var validMobile=mobile.match(regxMobile)
+                    if(!validMobile){
+                        document.getElementById('errMsgMobile').innerHTML='Please Enter Valid Mobile Number'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgMobile').innerHTML=''
+                    }
+                    //Read the Value from Shipping Address 1 text box
+                    var errMsgShippingaddress1=document.getElementById('shippingaddress1').value
+                     if(shippingaddress1.length>0){                 
+                        var regxShippingaddress1=/^[A-Za-z0-9#@.-,? ]+$/
+                        var validShippingaddress1=shippingaddress1.match(regxShippingaddress1)
+                        if(!validShippingaddress1){
+                            document.getElementById('errMsgShippingaddress1').innerHTML='Alphanumeric and #@$^%  are allowed'
+                            return false
+                        }
+                        else{
+                            document.getElementById('errMsgShippingaddress1').innerHTML=''
+                        }
+                     }
+                     //Read the Value from Shipping Address 2 text box
+                    var errMsgShippingaddress2=document.getElementById('shippingaddress2').value
+                     if(shippingaddress2.length>0){                 
+                        var regxShippingaddress2=/^[A-Za-z0-9#@.-,? ]+$/
+                        var validShippingaddress2=shippingaddress2.match(regxShippingaddress2)
+                        if(!validShippingaddress2){
+                            document.getElementById('errMsgShippingaddress2').innerHTML='Alphanumeric and #@$^%  are allowed'
+                            return false
+                        }
+                        else{
+                            document.getElementById('errMsgShippingaddress2').innerHTML=''
+                        }
+                     }
+           } 
+        </script>
+    </body>
+</html>

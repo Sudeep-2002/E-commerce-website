@@ -1,0 +1,301 @@
+<html>
+    <head>
+        <!--Bootstrap 5 CDN(content delivery networks)-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    </head>
+    <body onload="logVisitors()">
+        <!--Navigation Starts-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand">
+                    <img src="images/logo.png"alt=""style="width:30px;">
+                    Dazzling
+                </a>
+            </div>
+        </nav>
+
+        <!--Navigation End-->
+        <!--ads section start-->
+        <div class="row">
+            <div class="col-7">
+                <img src=https://www.apple.com/in/apple-watch-se/images/overview/hero/hero__w8w7dclctnmi_large.jpg style=" width:50%;
+                margin-top:70px; margin-left: 40%;">
+            </div>
+            <div class="col-5">
+                <h1 class="text-center" style="margin-top: 150px;"> Apple watch <span style="font-size:50px;">Series<span style="color: violet;"> 8</span>
+                </h1>
+                <p class="text-center">
+                Built with ECG,pedometer Water Resistant and Durable
+                </p>
+                <a class="btn btn-primary"style="margin-left:100px;"onclick="logAdclick()">View Product</a>
+                &nbsp;&nbsp;
+                <a href="#"style="text-decoration:none;">Buy now!</a>
+            </div>
+        </div>
+            <!--Ads Section End-->
+            <!--product catalog start-->
+            <div class="container">
+                <h1 class="text-center">Product catalog</h1>
+                <br>
+                 <!--4 columns grid start-->
+           <div class="row" id="productdata">           
+         
+            </div>
+           
+             <!--4 columns grid end-->
+            </div>
+            <!--product catalog End-->
+             <br>
+             <br>
+            <!--Contact section start-->
+            <div class="container">
+                <h1 class="text-center">For Bulk Orders Contact us</h1>
+            </div>
+            <br>
+            <p class="text-center">Order with more than 5 can fill the form below</p>
+            <div class="row">
+                <div class="col-4">
+                    <br>
+                    <br>
+                    <p>
+                        <b>Address :</b>
+                        #12345,4th cross 21st Main<br>
+                        Rajajinagar 4th T block,<br>
+                        Bengaluru 577694
+                    </p>
+                    <p>
+                        <b>Email :</b>
+                        sales@dazzling.com
+                    </p>
+                    <p>
+                        <b>Mobile Number :</b>
+                        8277394180
+                    </p>
+                </div>
+                <div class="col-8">
+                    <br>
+                    <br>
+                    <p>
+                        <label>Your Name</label>
+                        <input type="text"class="form-control" id="name">
+                        <span id="errMsgName"style="color:red;"></span>
+                        
+                    </p>
+                    <p>
+                        <label>Email</label>
+                        <input type="text"class="form-control"id="email">
+                        <span id="errMsgEmail"style="color:red;"></span>
+                        
+                    </p>
+                    <p>
+                        <label>Mobile</label>
+                        <input type="text"class="form-control"id="mobile">
+                        <span id="errMsgMobile"style="color:violet;"></span>
+                        
+                    </p>
+                    <p>
+                        <label>Your Query</label>
+                        <textarea class="form-control"id="query"></textarea>
+                        <span id="errMsgQuery"style="color:red;"></span>
+                    </p>
+                    <button class="btn btn-success"style="width:100%;"onclick="validateContactForm()">Submit</button>
+                    <p id="displayMsg"></p>
+                    <br>
+                    <br>
+                </div>
+                </div>
+            </div>
+            <!--Contact section end-->
+            <script>
+                function validateContactForm()
+                {
+                    //Read value from name text box
+                    var name=document.getElementById('name').value;
+                    if(name=='')
+                    {
+                        document.getElementById('errMsgName').innerHTML='Please Enter Name'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgName').innerHTML=''
+                    }
+                    var regxName=/^[A-Za-z. ]+$/  //Regular Expression concept
+                    var validName=name.match(regxName)  
+                    if(!validName){
+                        document.getElementById('errMsgName').innerHTML='Please Enter ValidName'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgName').innerHTML=''
+                    }
+                    //Read the value from email text box
+                    var email=document.getElementById('email').value
+                     if(email=='')
+                     {
+                        document.getElementById('errMsgEmail').innerHTML='Please Enter Email'
+                        return false
+                     }
+                    else{
+                        document.getElementById('errMsgEmail').innerHTML=''
+                    }
+                    var regxEmail=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                    var validEmail=email.match(regxEmail)
+                    if(!validEmail){
+                        document.getElementById('errMsgEmail').innerHTML='Please Enter ValidEmail'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgEmail').innerHTML=''
+                    }
+                    //Read the value from mobile text box
+                    var mobile=document.getElementById('mobile').value
+                     if(mobile=='')
+                     {
+                        document.getElementById('errMsgMobile').innerHTML='Please Enter Mobile Number'
+                        return false
+                     }
+                    else{
+                        document.getElementById('errMsgMobile').innerHTML=''
+                    }
+                    var regxMobile=/^[6789]\d{9}$/
+                    var validMobile=mobile.match(regxMobile)
+                    if(!validMobile){
+                        document.getElementById('errMsgMobile').innerHTML='Please Enter Valid Mobile Number'
+                        return false
+                    }
+                    else{
+                        document.getElementById('errMsgMobile').innerHTML=''
+                    }
+                    //Read the Value from query text box
+                    var query=document.getElementById('query').value
+                     if(query.length>0){                 
+                        var regxQuery=/^[A-Za-z0-9#@.,? ]+$/
+                        var validQuery=query.match(regxQuery)
+                        if(!validQuery){
+                            document.getElementById('errMsgQuery').innerHTML='Alphanumeric and #@$^%  are allowed'
+                            return false
+                        }
+                        else{
+                            document.getElementById('errMsgQuery').innerHTML=''
+                        }
+                     }
+
+           var xhttpcontactform = new XMLHttpRequest();
+            xhttpcontactform.onreadystatechange=function()
+            {
+                if(this.readyState == 4 && this.status == 200)
+                {
+                    console.log(this.responseText)
+                    var jsonData = JSON.parse(this.responseText)
+                    if(jsonData[0].errFlag==0)
+                    {
+                        document.getElementById('displayMsg').innerHTML ='<span style="color:green">'+jsonData[0].message+'<span>'
+                    }else{
+                        document.getElementById('displayMsg').innerHTML=jsonData[0].message
+                    }
+
+                }
+            }
+            xhttpcontactform.open("POST","http://127.0.0.1:8080/save-contact",true)
+            xhttpcontactform.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+            xhttpcontactform.send('customerName='+name+'&customerEmail='+email+'&customerMobile='+mobile+'&customerQuery='+query)
+                    
+                }
+
+                 // AJAX Code here
+                 var xhttpproducts = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpproducts.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)//RESPONSE FROM SERVER
+                            var jsonData=JSON.parse(this.responseText)//JSON DATA FORMAT
+                            var productHTML=''
+                            var productLength=jsonData.length
+                            for(var i=0;i<productLength;i++){
+                                productHTML+='<div class="col-3"onclick="viewProduct('+jsonData[i].id+')">'
+                                    productHTML+='<div class="card">'
+                                    productHTML+='<img src="'+jsonData[i].product_image+'" style="width: 100%;">'
+                                    productHTML+='<div class="card-body">'
+                                    productHTML+='<h5 class="card-title">'+jsonData[i].product_name+'iphone 14 pro Max</h5>'
+                                    productHTML+='<p class="card-body">Super Retina XDR display. 13.7 cm / 5.4‑inch (diagonal) all‑screen OLED display. 2340x1080-pixel resolution at 476 ppi'
+                                    productHTML+=jsonData[i].product_description
+                                    productHTML+='</p>'
+                                    productHTML+='<div class="row">'
+                                        productHTML+='<div class="col-6">'
+                                        productHTML+='<button class="btn btn-primary">Add to Cart</button>'
+                                        productHTML+='</div>'
+                                        productHTML+='<div class="col-6">'
+                                        productHTML+='<button class="btn btn-danger"style="width: 100%;">Buy</button>'
+                                        productHTML+='</div>'
+                                        productHTML+='</div>'
+                                        productHTML+='</div>'
+                                        productHTML+='</div>'
+                                        productHTML+='</div>'
+
+                
+                    
+                     }
+                     document.getElementById('productdata').innerHTML=productHTML
+
+                        }
+                       
+                     }
+                     xhttpproducts.open("GET","http://127.0.0.1:8080/products",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded")//SEND TO SERVER IS ENCRYPTED
+                     xhttpproducts.send()
+
+                     //AJAX TO TRACK AD CLICKS
+                     function logAdclick()
+                     {
+                        var xhttpproducts = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpproducts.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)//RESPONSE FROM SERVER
+                            var jsonData=JSON.parse(this.responseText)//JSON DATA FORMAT
+                            }
+                    }
+                     xhttpproducts.open("GET","http://127.0.0.1:8080/track-ad-click",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded")//SEND TO SERVER IS ENCRYPTED
+                     xhttpproducts.send()
+                   }
+                   //AJAX FOR LOGGING VISITORS
+                   function logVisitors(){
+
+                    var xhttpLogVisitors = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpLogVisitors.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)//RESPONSE FROM SERVER
+                            var jsonData=JSON.parse(this.responseText)//JSON DATA FORMAT
+                            }
+                    }
+                     xhttpLogVisitors.open("GET","http://127.0.0.1:8080/track-visitors",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded") //SEND TO SERVER IS ENCRYPTED
+                     xhttpLogVisitors.send()
+                   }
+                   //
+                   function viewProduct(productId){//alert(productId)
+                    var xhttpLogProductClicks = new XMLHttpRequest();//REQUEST OBJECT
+                     xhttpLogProductClicks.onreadystatechange=function()//ACCESSING FROM PARTICULAR CLASS
+                     {
+                        if(this.readyState==4 && this.status==200)//200 RESPONSE CODE SUCCESS
+                        {
+                            console.log(this.responseText)//RESPONSE FROM SERVER
+                            var jsonData=JSON.parse(this.responseText)//JSON DATA FORMAT
+                            }
+                    }
+                     xhttpLogProductClicks.open("GET","http://127.0.0.1:8080/track-visitors",true)
+                     //xhttpproducts.setRequestHeader("Content-type","application/x-www-form-urlencoded") //SEND TO SERVER IS ENCRYPTED
+                     xhttpLogProductClicks.send()
+
+                     window.location.href='product-details.html'
+                   }
+
+            </script>
+    </body>
+</html>
